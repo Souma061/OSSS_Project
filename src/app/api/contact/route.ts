@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
     const data = await resend.emails.send({
       from: 'OSSS Contact Form <onboarding@resend.dev>', // Resend default test email
-      to: ['hello@osss.in'], // Where you want to receive the emails
+      to: ['soumabrataghosh57@gmail.com'], // Where you want to receive the emails
       replyTo: email,
       subject: `New Project Inquiry from ${firstName} ${lastName}`,
       html: `
