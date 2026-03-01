@@ -2,23 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
-import { motion, Variants } from "framer-motion"
+import { fadeInUp, staggerContainer } from "@/lib/animations"
+import { motion } from "framer-motion"
 import { ArrowRight, Code2, Cpu, MessageSquare, ShieldCheck, Train } from "lucide-react"
 import Link from "next/link"
 
-// Animation variants
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-}
 
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-}
 
 export default function ServicesPage() {
   return (
@@ -68,10 +57,10 @@ export default function ServicesPage() {
             <Typography variant="muted" className="text-muted-foreground mb-6 flex-grow text-base leading-relaxed">
               Custom software development tailored explicitly to your operational bottlenecks. We build robust, scalable applications from startups to large organizations, ensuring absolute reliability.
             </Typography>
-            <ul className="flex flex-col gap-2 mt-auto mb-6 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> Enterprise Web Apps</li>
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> Scalable APIs</li>
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> Legacy Modernization</li>
+            <ul className="flex flex-wrap gap-2 mt-auto mb-6 text-sm text-muted-foreground">
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">Enterprise Web Apps</li>
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">Scalable APIs</li>
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">Legacy Modernization</li>
             </ul>
           </motion.div>
 
@@ -90,10 +79,10 @@ export default function ServicesPage() {
             <Typography variant="muted" className="text-muted-foreground mb-6 flex-grow text-base leading-relaxed">
               Seamlessly connect disparate tools and platforms. We build custom middleware and data pipelines that bridge the gaps in your technology stack, eliminating data silos.
             </Typography>
-            <ul className="flex flex-col gap-2 mt-auto mb-6 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> Custom Middleware</li>
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> 3rd-Party API Connectors</li>
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> Data Pipelines</li>
+            <ul className="flex flex-wrap gap-2 mt-auto mb-6 text-sm text-muted-foreground">
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">Custom Middleware</li>
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">3rd-Party APIs</li>
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">Data Pipelines</li>
             </ul>
           </motion.div>
 
@@ -112,10 +101,10 @@ export default function ServicesPage() {
             <Typography variant="muted" className="text-muted-foreground mb-6 flex-grow text-base leading-relaxed">
               Efficient, targeted software tools designed to empower internal operations and meet specific, highly technical client needs with precision and minimal overhead.
             </Typography>
-            <ul className="flex flex-col gap-2 mt-auto mb-6 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> DevOps Automation</li>
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> Internal Dashboards</li>
-              <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-primary"></div> Performance Optimization</li>
+            <ul className="flex flex-wrap gap-2 mt-auto mb-6 text-sm text-muted-foreground">
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">DevOps Auto</li>
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">Internal Dashboards</li>
+              <li className="font-mono text-xs font-semibold bg-muted/50 px-2.5 py-1 rounded-md text-foreground border border-border/50">Performance Ops</li>
             </ul>
           </motion.div>
 
@@ -178,6 +167,7 @@ export default function ServicesPage() {
               className="relative w-full aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-border"
             >
               <img
+                loading="lazy"
                 src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=2000&auto=format&fit=crop"
                 alt="Indian Railways"
                 className="w-full h-full object-cover filter brightness-75 transition-transform duration-[2s] group-hover:scale-110"

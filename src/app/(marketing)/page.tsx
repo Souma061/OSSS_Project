@@ -1,24 +1,13 @@
 "use client"
 
+import { CTASection } from "@/components/sections/CTASection"
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
-import { motion, Variants } from "framer-motion"
-import { ArrowRight, Code2, Cpu, ShieldCheck, Star, Train } from "lucide-react"
+import { fadeInUp, staggerContainer } from "@/lib/animations"
+import { motion } from "framer-motion"
+import { ArrowRight, Code2, Cpu, ShieldCheck, Train } from "lucide-react"
 import Link from "next/link"
-
-// Animation variants
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-}
-
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 }
-  }
-}
 
 export default function HomePage() {
   return (
@@ -44,26 +33,30 @@ export default function HomePage() {
 
           <motion.div variants={fadeInUp}>
             <Typography variant="h1" className="text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 leading-tight">
-              Tailor-Made Software <br className="hidden md:block" /> Solutions for Your Business
+              We Build Software <br className="hidden md:block" /> That Moves the Nation
             </Typography>
           </motion.div>
 
           <motion.div variants={fadeInUp}>
             <Typography variant="lead" className="max-w-2xl mx-auto text-muted-foreground md:text-xl">
-              Empowering operations with innovative software tailored to your unique needs and industry requirements. Based in Kolkata, we deliver reliable solutions for startups and enterprise giants alike.
+              Enterprise solutions for logistics leaders and production-grade MVPs for high-growth startups. Based in Kolkata, we deliver reliability at scale.
             </Typography>
           </motion.div>
 
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mt-6">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="gradient" size="lg" className="w-full sm:w-auto h-14 px-8 rounded-full text-md group">
-                Start a Project <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <Link href="/contact">
+                <Button variant="gradient" size="lg" className="w-full sm:w-auto h-14 px-8 rounded-full text-md group">
+                  Start a Project <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto h-14 px-8 rounded-full text-md backdrop-blur-sm bg-background/50 transition-colors hover:bg-background/80">
-                View Our Work
-              </Button>
+              <Link href="/portfolio">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto h-14 px-8 rounded-full text-md backdrop-blur-sm bg-background/50 transition-colors hover:bg-background/80">
+                  View Our Work
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -119,34 +112,7 @@ export default function HomePage() {
       </section>
 
       {/* Client Feedback Section */}
-      <section className="w-full py-24 bg-blue-500 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center text-center max-w-4xl mx-auto"
-          >
-            <div className="flex gap-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-6 w-6 fill-white text-white" />
-              ))}
-            </div>
-            <Typography variant="h3" className="text-2xl md:text-4xl font-normal leading-relaxed mb-10 text-white">
-              "Om Sai Software Solutions transformed our operations with innovative, reliable tools that truly empower our business."
-            </Typography>
-
-            <div className="flex flex-col items-center justify-center gap-4">
-              <div className="h-16 w-16 rounded-full overflow-hidden border-2 border-white/20">
-                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=200&h=200" alt="P. Sharma" className="w-full h-full object-cover" />
-              </div>
-              <Typography variant="large" className="font-semibold text-white">P. Sharma</Typography>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <TestimonialsSection title="What Our Clients Say" subtitle="Trusted by 150+ organizations to deliver production-ready software." />
 
       {/* 3. Services Bento Box Grid */}
       <section className="w-full py-24 px-4 md:px-6 container mx-auto">
@@ -174,7 +140,7 @@ export default function HomePage() {
               </Typography>
             </div>
             <div className="w-full h-48 mt-4 mb-6 rounded-2xl overflow-hidden relative z-10">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Team collaborating" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Team collaborating" />
             </div>
             <div className="flex items-center text-sm font-medium text-primary mt-auto relative z-10 transition-transform group-hover:translate-x-1">
               Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
@@ -226,6 +192,7 @@ export default function HomePage() {
             <Link href="/portfolio/1" className="absolute inset-0 z-30"></Link>
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-10 w-full h-full pointer-events-none"></div>
             <img
+              loading="lazy"
               src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=2000&auto=format&fit=crop"
               alt="Train Background"
               className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40 group-hover:scale-110 group-hover:opacity-50 transition-all duration-1000 z-0"
@@ -244,6 +211,9 @@ export default function HomePage() {
 
         </div>
       </section>
+
+      {/* CTA */}
+      <CTASection />
 
     </div>
   )

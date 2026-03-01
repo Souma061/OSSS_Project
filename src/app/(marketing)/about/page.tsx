@@ -1,22 +1,29 @@
 "use client"
 
+import { CTASection } from "@/components/sections/CTASection"
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection"
 import { Typography } from "@/components/ui/typography"
-import { motion, Variants } from "framer-motion"
-import { Award, Globe, Star, Users } from "lucide-react"
+import { fadeInUp, staggerContainer } from "@/lib/animations"
+import { motion, useInView, useSpring, useTransform } from "framer-motion"
+import { Award, Globe, Users } from "lucide-react"
+import { useEffect, useRef } from "react"
 
-// Animation variants
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+function AnimatedCounter({ value, suffix = "" }: { value: number, suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, margin: "-100px" })
+  const spring = useSpring(0, { bounce: 0, duration: 2500 })
+  const display = useTransform(spring, (current) => Math.round(current) + suffix)
+
+  useEffect(() => {
+    if (inView) {
+      spring.set(value)
+    }
+  }, [inView, spring, value])
+
+  return <motion.span ref={ref}>{display}</motion.span>
 }
 
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-}
+
 
 export default function AboutPage() {
   return (
@@ -99,7 +106,7 @@ export default function AboutPage() {
               className="flex flex-col items-center pt-8 md:pt-0"
             >
               <Users className="h-10 w-10 text-primary mb-6" />
-              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2">150+</Typography>
+              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2"><AnimatedCounter value={150} suffix="+" /></Typography>
               <Typography variant="large" className="text-muted-foreground uppercase tracking-wider font-semibold">Trusted Clients</Typography>
             </motion.div>
 
@@ -111,7 +118,7 @@ export default function AboutPage() {
               className="flex flex-col items-center pt-8 md:pt-0"
             >
               <Award className="h-10 w-10 text-blue-500 mb-6" />
-              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2">15+</Typography>
+              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2"><AnimatedCounter value={15} suffix="+" /></Typography>
               <Typography variant="large" className="text-muted-foreground uppercase tracking-wider font-semibold">Years Experience</Typography>
             </motion.div>
 
@@ -123,7 +130,7 @@ export default function AboutPage() {
               className="flex flex-col items-center pt-8 md:pt-0"
             >
               <Globe className="h-10 w-10 text-primary mb-6" />
-              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2">500+</Typography>
+              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2"><AnimatedCounter value={500} suffix="+" /></Typography>
               <Typography variant="large" className="text-muted-foreground uppercase tracking-wider font-semibold">Deployments</Typography>
             </motion.div>
 
@@ -132,88 +139,12 @@ export default function AboutPage() {
       </section>
 
       {/* Client Feedback */}
-      <section className="w-full py-24 px-4 md:px-6 bg-background">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Typography variant="h2" className="mb-4">Client Feedback</Typography>
-              <Typography variant="muted" className="text-muted-foreground max-w-xl mx-auto">
-                Hear what our clients say about our software solutions and services.
-              </Typography>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-            {/* Review 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-[#EAF5FD] rounded-2xl p-8 lg:p-12 flex flex-col"
-            >
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-slate-900 text-slate-900" />
-                ))}
-              </div>
-              <Typography variant="p" className="text-slate-900/90 mb-10 flex-grow text-lg">
-                "The team at Om Sai Software Solutions exceeded our expectations with their professionalism and expertise in delivering tailored software solutions for our organization."
-              </Typography>
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="h-14 w-14 rounded-full overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150" alt="Anita Roy" className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <Typography variant="large" className="font-semibold text-slate-900 m-0">Anita Roy</Typography>
-                  <Typography variant="small" className="text-slate-600">Delhi, India</Typography>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Review 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-[#EAF5FD] rounded-2xl p-8 lg:p-12 flex flex-col"
-            >
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-slate-900 text-slate-900" />
-                ))}
-              </div>
-              <Typography variant="p" className="text-slate-900/90 mb-10 flex-grow text-lg">
-                "Om Sai Software Solutions provided exceptional service and innovative solutions for our needs."
-              </Typography>
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="h-14 w-14 rounded-full overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150" alt="Ravi Sharma" className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <Typography variant="large" className="font-semibold text-slate-900 m-0">Ravi Sharma</Typography>
-                  <Typography variant="small" className="text-slate-600">Kolkata, India</Typography>
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* 3. Our Location */}
       <section className="w-full py-24 px-4 md:px-6 relative">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-
-            {/* Text details */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -225,7 +156,6 @@ export default function AboutPage() {
               <Typography variant="p" className="text-muted-foreground mb-10 max-w-lg">
                 Located in Kolkata, we provide tailored software solutions to meet diverse client needs across various industries, including our esteemed partnership with Indian Railways.
               </Typography>
-
               <div className="space-y-6">
                 <div>
                   <Typography variant="h4" className="mb-1 text-foreground">Kolkata</Typography>
@@ -238,7 +168,6 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* Map Embed */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -263,6 +192,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* CTA */}
+      <CTASection />
 
     </div>
   )

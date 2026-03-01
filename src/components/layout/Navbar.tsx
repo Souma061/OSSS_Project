@@ -23,6 +23,42 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
+  // Refs-based underline: measure each link's position and animate a single div
+  const navRef = React.useRef<HTMLDivElement>(null)
+  const linkRefs = React.useRef<Map<string, HTMLAnchorElement>>(new Map())
+  const [underline, setUnderline] = React.useState({ left: 0, width: 0 })
+  const [hasHydrated, setHasHydrated] = React.useState(false)
+
+  // Measure the active link's position relative to the nav container
+  const updateUnderline = React.useCallback(() => {
+    const nav = navRef.current
+    const activeLink = linkRefs.current.get(pathname)
+    if (nav && activeLink) {
+      const navRect = nav.getBoundingClientRect()
+      const linkRect = activeLink.getBoundingClientRect()
+      setUnderline({
+        left: linkRect.left - navRect.left,
+        width: linkRect.width,
+      })
+    }
+  }, [pathname])
+
+  // Re-measure on pathname change and after initial hydration
+  React.useEffect(() => {
+    // Small delay to let the DOM settle after route change
+    const timer = setTimeout(() => {
+      updateUnderline()
+      setHasHydrated(true)
+    }, 50)
+    return () => clearTimeout(timer)
+  }, [pathname, updateUnderline])
+
+  // Also re-measure on resize
+  React.useEffect(() => {
+    window.addEventListener("resize", updateUnderline)
+    return () => window.removeEventListener("resize", updateUnderline)
+  }, [updateUnderline])
+
   // Handle scroll effect for glassmorphism
   React.useEffect(() => {
     const handleScroll = () => {
@@ -52,27 +88,31 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav ref={navRef} className="hidden md:flex items-center gap-8 relative">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
+              ref={(el) => {
+                if (el) linkRefs.current.set(link.href, el)
+              }}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary relative",
+                "text-sm font-medium transition-colors hover:text-primary relative py-1",
                 pathname === link.href ? "text-foreground" : "text-muted-foreground"
               )}
             >
               {link.name}
-              {pathname === link.href && (
-                <motion.div
-                  layoutId="active-nav"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                  initial={false}
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
             </Link>
           ))}
+
+          {/* Single persistent animated underline */}
+          {hasHydrated && underline.width > 0 && (
+            <motion.div
+              className="absolute -bottom-1 h-0.5 bg-primary"
+              animate={{ left: underline.left, width: underline.width }}
+              transition={{ type: "spring", stiffness: 350, damping: 30 }}
+            />
+          )}
         </nav>
 
         {/* Actions & Mobile Toggle */}
