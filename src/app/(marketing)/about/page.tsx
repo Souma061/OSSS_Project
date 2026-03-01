@@ -1,12 +1,269 @@
+"use client"
+
 import { Typography } from "@/components/ui/typography"
+import { motion, Variants } from "framer-motion"
+import { Award, Globe, Star, Users } from "lucide-react"
+
+// Animation variants
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+}
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+}
 
 export default function AboutPage() {
   return (
-    <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
-      <Typography variant="h1" className="mb-4">Our Story</Typography>
-      <Typography variant="lead" className="max-w-2xl text-muted-foreground">
-        15 years of proven expertise starting from the heart of Kolkata.
-      </Typography>
+    <div className="flex flex-col w-full min-h-screen pt-24 pb-16 overflow-hidden relative">
+      {/* Subtle Ambient Radial Glow */}
+      <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] pointer-events-none"></div>
+
+      {/* 1. Hero Section */}
+      <section className="relative px-4 md:px-6 container mx-auto max-w-6xl mb-24">
+        {/* Subtle Background Glows */}
+        <div className="absolute top-0 right-0 -z-10 w-96 h-96 bg-primary/20 blur-[128px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+
+        <motion.div
+          className="flex flex-col lg:flex-row gap-12 items-center"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Text Content */}
+          <div className="flex-1 text-center lg:text-left">
+            <motion.div variants={fadeInUp} className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm mb-6">
+              Founded in Kolkata
+            </motion.div>
+            <motion.div variants={fadeInUp}>
+              <Typography variant="h1" className="mb-6 leading-tight">
+                Engineering <span className="text-primary font-black italic">Excellence</span> from the ground up.
+              </Typography>
+            </motion.div>
+            <motion.div variants={fadeInUp}>
+              <Typography variant="lead" className="max-w-2xl text-muted-foreground mb-8 text-lg">
+                For over 15 years, Om Sai Software Solutions has been the trusted technology partner for startups and enterprise giants alike. We believe in building custom, robust software that not only meets your needs today but scales for your tomorrow.
+              </Typography>
+            </motion.div>
+          </div>
+
+          {/* Hero Image */}
+          <motion.div
+            variants={fadeInUp}
+            className="flex-1 w-full relative"
+          >
+            <div className="aspect-square max-h-[500px] w-full relative rounded-full overflow-hidden border border-border/50 shadow-2xl isolate group cursor-pointer lg:ml-auto">
+              <div className="absolute inset-0 bg-primary mix-blend-overlay opacity-20 group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
+              <img
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2000&auto=format&fit=crop"
+                alt="Our Team"
+                className="w-full h-full object-cover transform scale-105 group-hover:scale-[1.15] transition-transform duration-[1.5s] ease-[cubic-bezier(0.22,1,0.36,1)]"
+              />
+            </div>
+            {/* Floating Badge */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              style={{ willChange: "transform" }}
+              className="absolute -bottom-6 -left-6 md:bottom-12 md:-left-12 bg-card border border-border rounded-2xl p-6 shadow-xl z-20"
+            >
+              <div className="flex items-center gap-4">
+                <div className="bg-primary/10 p-3 rounded-full text-primary">
+                  <Award className="h-6 w-6" />
+                </div>
+                <div>
+                  <Typography variant="h4" className="mb-0">15+ Years</Typography>
+                  <Typography variant="small" className="text-muted-foreground">Proven Expertise</Typography>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* 2. By the Numbers */}
+      <section className="w-full bg-muted/40 border-y border-border py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border">
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center pt-8 md:pt-0"
+            >
+              <Users className="h-10 w-10 text-primary mb-6" />
+              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2">150+</Typography>
+              <Typography variant="large" className="text-muted-foreground uppercase tracking-wider font-semibold">Trusted Clients</Typography>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="flex flex-col items-center pt-8 md:pt-0"
+            >
+              <Award className="h-10 w-10 text-blue-500 mb-6" />
+              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2">15+</Typography>
+              <Typography variant="large" className="text-muted-foreground uppercase tracking-wider font-semibold">Years Experience</Typography>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col items-center pt-8 md:pt-0"
+            >
+              <Globe className="h-10 w-10 text-primary mb-6" />
+              <Typography variant="h1" className="text-6xl font-black text-foreground mb-2">500+</Typography>
+              <Typography variant="large" className="text-muted-foreground uppercase tracking-wider font-semibold">Deployments</Typography>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Client Feedback */}
+      <section className="w-full py-24 px-4 md:px-6 bg-background">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <Typography variant="h2" className="mb-4">Client Feedback</Typography>
+              <Typography variant="muted" className="text-muted-foreground max-w-xl mx-auto">
+                Hear what our clients say about our software solutions and services.
+              </Typography>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            {/* Review 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-[#EAF5FD] rounded-2xl p-8 lg:p-12 flex flex-col"
+            >
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-slate-900 text-slate-900" />
+                ))}
+              </div>
+              <Typography variant="p" className="text-slate-900/90 mb-10 flex-grow text-lg">
+                "The team at Om Sai Software Solutions exceeded our expectations with their professionalism and expertise in delivering tailored software solutions for our organization."
+              </Typography>
+              <div className="flex items-center gap-4 mt-auto">
+                <div className="h-14 w-14 rounded-full overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150" alt="Anita Roy" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <Typography variant="large" className="font-semibold text-slate-900 m-0">Anita Roy</Typography>
+                  <Typography variant="small" className="text-slate-600">Delhi, India</Typography>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Review 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-[#EAF5FD] rounded-2xl p-8 lg:p-12 flex flex-col"
+            >
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-slate-900 text-slate-900" />
+                ))}
+              </div>
+              <Typography variant="p" className="text-slate-900/90 mb-10 flex-grow text-lg">
+                "Om Sai Software Solutions provided exceptional service and innovative solutions for our needs."
+              </Typography>
+              <div className="flex items-center gap-4 mt-auto">
+                <div className="h-14 w-14 rounded-full overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150" alt="Ravi Sharma" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <Typography variant="large" className="font-semibold text-slate-900 m-0">Ravi Sharma</Typography>
+                  <Typography variant="small" className="text-slate-600">Kolkata, India</Typography>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Our Location */}
+      <section className="w-full py-24 px-4 md:px-6 relative">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
+
+            {/* Text details */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex-1"
+            >
+              <Typography variant="h2" className="mb-6">Our Location</Typography>
+              <Typography variant="p" className="text-muted-foreground mb-10 max-w-lg">
+                Located in Kolkata, we provide tailored software solutions to meet diverse client needs across various industries, including our esteemed partnership with Indian Railways.
+              </Typography>
+
+              <div className="space-y-6">
+                <div>
+                  <Typography variant="h4" className="mb-1 text-foreground">Kolkata</Typography>
+                  <Typography variant="muted">Manicktala</Typography>
+                </div>
+                <div>
+                  <Typography variant="h4" className="mb-1 text-foreground">Hours</Typography>
+                  <Typography variant="muted">9 AM - 6 PM</Typography>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Map Embed */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex-1 w-full"
+            >
+              <div className="w-full aspect-video md:aspect-square lg:aspect-video rounded-3xl overflow-hidden shadow-2xl border border-border bg-muted">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14736.262584144073!2d88.3615591901358!3d22.583694038755608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277ab04d9a171%3A0xc4ebdbf6236b2816!2sManicktala%2C%20Kolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1710186100000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Om Sai Software Solutions Location"
+                  className="grayscale contrast-125 hover:grayscale-0 transition-all duration-700 hover:contrast-100"
+                ></iframe>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
     </div>
   )
 }
