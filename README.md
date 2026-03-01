@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OSSS Website Redesign
 
-## Getting Started
+A modern, vibrant, and approachable tech startup website designed with a premium, enterprise-like aesthetic. Built from the ground up for performance, accessibility, and high engagement with fluid animations.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Forms:** [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **Emails:** [Resend](https://resend.com/)
+- **Theming:** [next-themes](https://github.com/pacocoursey/next-themes) (Dark/Light mode support)
+
+## 📁 Project Structure
+
+```text
+src/
+├── app/          # Next.js App Router pages and layouts
+├── components/   # Reusable UI components and page sections
+├── config/       # Application configuration and constants
+├── hooks/        # Custom React hooks
+├── lib/          # Utility functions and type definitions
+└── styles/       # Global CSS and Tailwind configurations
+```
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) (v20+ recommended) and `npm` installed.
+
+### Installation
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Set up your environment variables in `.env` (make sure to set your Resend API key and any other necessary keys).
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Premium UI/UX:** Clean backgrounds, contrasting text, and vibrant gradient accents inspired by top-tier modern web design trends.
+- **Fluid Animations:** Smooth, subtle micro-interactions across the board leveraging Framer Motion.
+- **Robust Contact Forms:** Fully typed and validated forms complete with animated feedback and reliable email delivery (including project assessment answers) via Resend.
+- **Responsive Layouts:** Optimized for seamless viewing across all desktop, tablet, and mobile devices.
 
-## Learn More
+## 📜 Scripts
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command         | Description                            |
+|-----------------|----------------------------------------|
+| `npm run dev`   | Starts the development server.         |
+| `npm run build` | Builds the app for production.         |
+| `npm run start` | Runs the production build locally.     |
+| `npm run lint`  | Runs ESLint to check code quality.     |
