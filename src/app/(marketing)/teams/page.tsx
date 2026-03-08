@@ -8,10 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 const teamMembers = [
   {
-    name: "Shambo Sourav Mullick",
+    name: "John Doe",
     role: "Founder & Product Manager",
     image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1723092514593-3cbe7e7e1258?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTYxfHxwZW9wbGVzJTIwaW1hZ2VzfGVufDB8fDB8fHww",
     bio: "Over 15 years of experience building scalable enterprise software solutions.",
   },
   {
