@@ -4,22 +4,19 @@ import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { JetBrains_Mono, Outfit } from "next/font/google";
 import "./globals.css";
-
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
 });
-
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
   title: "OSSS | Custom Software & Enterprise Integrations",
-  description: "Kolkata-based custom software development agency specializing in enterprise-grade integrations and startup software tools.",
+  description:
+    "Kolkata-based custom software development agency specializing in enterprise-grade integrations and startup software tools.",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}>
+      <body
+        className={`${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -35,9 +34,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

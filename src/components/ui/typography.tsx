@@ -1,6 +1,5 @@
-import { cn } from "@/lib/utils"
-import * as React from "react"
-
+import { cn } from "@/lib/utils";
+import * as React from "react";
 const textVariants = {
   h1: "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
   h2: "scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0",
@@ -13,25 +12,20 @@ const textVariants = {
   large: "text-lg font-semibold",
   small: "text-sm font-medium leading-none",
   muted: "text-sm text-muted-foreground",
-}
-
+};
 type TypographyProps = React.HTMLAttributes<HTMLElement> & {
-  variant?: keyof typeof textVariants
-  as?: React.ElementType
-}
-
+  variant?: keyof typeof textVariants;
+  as?: React.ElementType;
+};
 export function Typography({
   className,
   variant = "p",
   as,
   ...props
 }: TypographyProps) {
-  const Component = (as || (variant.startsWith("h") ? variant : "p")) as React.ElementType
-
+  const Component = (as ||
+    (variant.startsWith("h") ? variant : "p")) as React.ElementType;
   return (
-    <Component
-      className={cn(textVariants[variant], className)}
-      {...props}
-    />
-  )
+    <Component className={cn(textVariants[variant], className)} {...props} />
+  );
 }
