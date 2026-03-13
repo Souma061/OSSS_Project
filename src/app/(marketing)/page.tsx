@@ -163,7 +163,7 @@ export default function HomePage() {
         subtitle="Trusted by 150+ organizations to deliver production-ready software."
       />
       {}
-      <section className="w-full py-24 px-4 md:px-6 container mx-auto">
+      <section className="w-full py-12 md:py-24 px-4 md:px-6 container mx-auto">
         <div className="flex flex-col items-center text-center mb-16">
           <Typography variant="h2">
             Empowering Your Business Through Technology

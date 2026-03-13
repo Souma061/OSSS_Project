@@ -147,20 +147,23 @@
     word-break: break-word;
   }
 
-  /* Ensure interactive elements always have a minimum touch target size (44px) */
-  button,
-  [role="button"],
-  a {
-    min-height: 44px;
-    min-width: 44px;
-  }
+  /* Mobile-only: 44px touch targets (Apple/Google HIG) — doesn't affect desktop */
+  @media (max-width: 767px) {
+    button,
+    [role="button"] {
+      min-height: 44px;
+    }
 
-  /* Inline/text links don't need forced min-height */
-  p a,
-  li a,
-  nav a {
-    min-height: unset;
-    min-width: unset;
+    /* Tighter section vertical padding on small phones */
+    section {
+      padding-top: clamp(2.5rem, 8vw, 6rem);
+      padding-bottom: clamp(2.5rem, 8vw, 6rem);
+    }
+
+    /* Ensure Google Maps iframes are always full-height on mobile */
+    iframe {
+      min-height: 280px;
+    }
   }
 
   @keyframes marquee {

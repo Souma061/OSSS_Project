@@ -112,7 +112,7 @@ export default function TeamsPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {}
-                  <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300 z-20">
+                  <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-100 translate-x-0 md:opacity-0 md:translate-x-4 md:group-hover:opacity-100 md:group-hover:translate-x-0 transition-all duration-300 z-20">
                     <Link
                       href="#"
                       className="flex items-center justify-center w-10 h-10 rounded-full bg-background/80 backdrop-blur-md text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-sm"

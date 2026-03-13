@@ -47,8 +47,8 @@ export default function ContactPage() {
   return (
     <div className="min-h-[80vh] w-full pt-20 pb-16 relative overflow-hidden">
       <div className="absolute inset-0 -z-10 h-full w-full bg-background pointer-events-none">
-        <div className="absolute top-1/2 left-0 -translate-x-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-0 right-0 translate-x-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]"></div>
+        <div className="absolute top-1/2 left-0 -translate-x-1/2 w-[min(384px,80vw)] h-[min(384px,80vw)] bg-primary/10 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-0 right-0 translate-x-1/2 w-[min(500px,90vw)] h-[min(500px,90vw)] bg-blue-500/10 rounded-full blur-[120px]"></div>
       </div>
       <div className="px-4 md:px-6 container mx-auto max-w-6xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-12">
@@ -77,7 +77,7 @@ export default function ContactPage() {
             </motion.div>
             <motion.div
               variants={fadeInUp}
-              className="w-full h-64 md:h-72 rounded-3xl overflow-hidden mb-12 relative isolate shadow-lg"
+              className="hidden md:block w-full h-64 md:h-72 rounded-3xl overflow-hidden mb-12 relative isolate shadow-lg"
             >
               <img
                 src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2000&auto=format&fit=crop"

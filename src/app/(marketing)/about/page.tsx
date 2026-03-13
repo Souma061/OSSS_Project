@@ -36,7 +36,7 @@ export default function AboutPage() {
       {}
       <section className="relative px-4 md:px-6 container mx-auto max-w-6xl mb-24">
         {}
-        <div className="absolute top-0 right-0 -z-10 w-96 h-96 bg-primary/20 blur-[128px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-0 right-0 -z-10 w-[min(384px,80vw)] h-[min(384px,80vw)] bg-primary/20 blur-[128px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
         <motion.div
           className="flex flex-col lg:flex-row gap-12 items-center"
           variants={staggerContainer}
@@ -90,7 +90,7 @@ export default function AboutPage() {
               animate={{ y: [0, -15, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
               style={{ willChange: "transform" }}
-              className="absolute -bottom-6 -left-6 md:bottom-12 md:-left-12 bg-card border border-border rounded-2xl p-6 shadow-xl z-20"
+              className="absolute bottom-4 left-4 md:-bottom-6 md:-left-6 lg:bottom-12 lg:-left-12 bg-card border border-border rounded-2xl p-4 md:p-6 shadow-xl z-20"
             >
               <div className="flex items-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-full text-primary">
@@ -123,7 +123,7 @@ export default function AboutPage() {
               <Users className="h-10 w-10 text-primary mb-6" />
               <Typography
                 variant="h1"
-                className="text-6xl font-black text-foreground mb-2"
+                className="text-4xl sm:text-6xl font-black text-foreground mb-2"
               >
                 <AnimatedCounter value={150} suffix="+" />
               </Typography>
@@ -144,7 +144,7 @@ export default function AboutPage() {
               <Award className="h-10 w-10 text-blue-500 mb-6" />
               <Typography
                 variant="h1"
-                className="text-6xl font-black text-foreground mb-2"
+                className="text-4xl sm:text-6xl font-black text-foreground mb-2"
               >
                 <AnimatedCounter value={15} suffix="+" />
               </Typography>
@@ -165,7 +165,7 @@ export default function AboutPage() {
               <Globe className="h-10 w-10 text-primary mb-6" />
               <Typography
                 variant="h1"
-                className="text-6xl font-black text-foreground mb-2"
+                className="text-4xl sm:text-6xl font-black text-foreground mb-2"
               >
                 <AnimatedCounter value={500} suffix="+" />
               </Typography>
