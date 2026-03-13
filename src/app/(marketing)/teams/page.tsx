@@ -58,7 +58,7 @@ export default function TeamsPage() {
       {}
       <section className="relative px-4 md:px-6 container mx-auto max-w-6xl mb-24">
         {}
-        <div className="absolute top-0 right-1/4 -z-10 w-96 h-96 bg-primary/20 blur-[128px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-0 right-1/4 -z-10 w-[min(384px,80vw)] h-[min(384px,80vw)] bg-primary/20 blur-[128px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
         <motion.div
           className="text-center max-w-3xl mx-auto"
           variants={staggerContainer}
