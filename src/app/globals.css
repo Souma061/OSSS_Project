@@ -74,12 +74,96 @@
   --font-sans: var(--font-outfit);
 }
 
+/* ─── Fluid Typography ───────────────────────────────────────────────────────
+   Using clamp(min, preferred, max) so text scales proportionally
+   between mobile and desktop without breakpoint hacks.
+──────────────────────────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-fluid-xs   { font-size: clamp(0.7rem,  1.5vw, 0.8rem); }
+  .text-fluid-sm   { font-size: clamp(0.8rem,  1.8vw, 0.9rem); }
+  .text-fluid-base { font-size: clamp(0.9rem,  2vw,   1rem); }
+  .text-fluid-lg   { font-size: clamp(1rem,    2.5vw, 1.125rem); }
+  .text-fluid-xl   { font-size: clamp(1.1rem,  3vw,   1.25rem); }
+  .text-fluid-2xl  { font-size: clamp(1.25rem, 3.5vw, 1.5rem); }
+  .text-fluid-3xl  { font-size: clamp(1.5rem,  4vw,   1.875rem); }
+  .text-fluid-4xl  { font-size: clamp(1.75rem, 5vw,   2.25rem); }
+  .text-fluid-5xl  { font-size: clamp(2rem,    6vw,   3rem); }
+  .text-fluid-6xl  { font-size: clamp(2.25rem, 7vw,   3.75rem); }
+  .text-fluid-7xl  { font-size: clamp(2.5rem,  8vw,   4.5rem); }
+
+  /* Safe area padding for phones with notches / home-bar */
+  .safe-top    { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-left   { padding-left: env(safe-area-inset-left); }
+  .safe-right  { padding-right: env(safe-area-inset-right); }
+
+  /* Fluid container: narrow on mobile, wide on desktop */
+  .fluid-container {
+    width: 100%;
+    padding-inline: clamp(1rem, 5vw, 3rem);
+    margin-inline: auto;
+    max-width: 80rem;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
   }
+
+  html {
+    /* Prevent horizontal scroll from any overflow */
+    overflow-x: hidden;
+    /* Smooth scrolling site-wide */
+    scroll-behavior: smooth;
+    /* Prevent font inflation on mobile (iOS/Android) */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-background text-foreground;
+    /* Prevent horizontal overflow on body too */
+    overflow-x: hidden;
+    /* Ensure body fills at least screen height */
+    min-height: 100dvh;
+  }
+
+  /* Responsive images and media by default */
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent long words or URLs from breaking layout on mobile */
+  p,
+  h1, h2, h3, h4, h5, h6,
+  li, a, span {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Mobile-only: 44px touch targets (Apple/Google HIG) — doesn't affect desktop */
+  @media (max-width: 767px) {
+    button,
+    [role="button"] {
+      min-height: 44px;
+    }
+
+    /* Tighter section vertical padding on small phones */
+    section {
+      padding-top: clamp(2.5rem, 8vw, 6rem);
+      padding-bottom: clamp(2.5rem, 8vw, 6rem);
+    }
+
+    /* Ensure Google Maps iframes are always full-height on mobile */
+    iframe {
+      min-height: 280px;
+    }
   }
 
   @keyframes marquee {

@@ -8,7 +8,7 @@ export function CTASection() {
   return (
     <section className="w-full py-24 px-4 md:px-6 relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(600px,90vw)] h-[min(600px,90vw)] bg-primary/10 rounded-full blur-[120px]"></div>
       </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}

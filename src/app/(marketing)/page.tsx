@@ -17,7 +17,7 @@ export default function HomePage() {
         <motion.div
           animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 -z-10 w-96 h-96 bg-primary/20 blur-[128px] rounded-full translate-x-[-50%]"
+          className="absolute top-1/4 left-1/4 -z-10 w-[min(384px,80vw)] h-[min(384px,80vw)] bg-primary/20 blur-[128px] rounded-full translate-x-[-50%]"
         ></motion.div>
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -27,7 +27,7 @@ export default function HomePage() {
             ease: "easeInOut",
             delay: 1,
           }}
-          className="absolute bottom-1/4 right-1/4 -z-10 w-96 h-96 bg-blue-500/20 blur-[128px] rounded-full translate-x-[50%]"
+          className="absolute bottom-1/4 right-1/4 -z-10 w-[min(384px,80vw)] h-[min(384px,80vw)] bg-blue-500/20 blur-[128px] rounded-full translate-x-[50%]"
         ></motion.div>
         <motion.div
           className="container max-w-5xl mx-auto text-center flex flex-col items-center gap-8"
@@ -45,7 +45,7 @@ export default function HomePage() {
           <motion.div variants={fadeInUp}>
             <Typography
               variant="h1"
-              className="text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 leading-tight"
             >
               We Build Software <br className="hidden md:block" /> That Moves
               the Nation
@@ -163,7 +163,7 @@ export default function HomePage() {
         subtitle="Trusted by 150+ organizations to deliver production-ready software."
       />
       {}
-      <section className="w-full py-24 px-4 md:px-6 container mx-auto">
+      <section className="w-full py-12 md:py-24 px-4 md:px-6 container mx-auto">
         <div className="flex flex-col items-center text-center mb-16">
           <Typography variant="h2">
             Empowering Your Business Through Technology
