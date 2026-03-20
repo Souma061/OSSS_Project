@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Train,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 export default function ServicesPage() {
   return (
@@ -46,7 +47,7 @@ export default function ServicesPage() {
               variant="lead"
               className="max-w-2xl text-muted-foreground mx-auto"
             >
-              We don't just write code; we architect systems. From
+              We don&apos;t just write code; we architect systems. From
               high-throughput APIs to immersive user interfaces, our solutions
               drive operational excellence.
             </Typography>
@@ -192,8 +193,8 @@ export default function ServicesPage() {
                 Empowering Indian Railways.
               </Typography>
               <Typography variant="lead" className="text-muted-foreground mb-8">
-                We're incredibly proud to provide custom software solutions that
-                enhance operational efficiency for one of the world's largest
+                We&apos;re incredibly proud to provide custom software solutions that
+                enhance operational efficiency for one of the world&apos;s largest
                 transportation networks.
               </Typography>
               <div className="flex flex-col gap-4 mb-8">
@@ -248,11 +249,12 @@ export default function ServicesPage() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative w-full aspect-video md:aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-border"
             >
-              <img
-                loading="lazy"
+              <Image
                 src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=2000&auto=format&fit=crop"
                 alt="Indian Railways"
-                className="w-full h-full object-cover filter brightness-75 transition-transform duration-[2s] group-hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover filter brightness-75 transition-transform duration-[2s] group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent"></div>
             </motion.div>
@@ -274,7 +276,7 @@ export default function ServicesPage() {
             variant="lead"
             className="text-muted-foreground max-w-2xl mx-auto mb-8"
           >
-            Let's discuss how our custom software solutions can specifically
+            Let&apos;s discuss how our custom software solutions can specifically
             address your unique business bottlenecks.
           </Typography>
           <motion.div

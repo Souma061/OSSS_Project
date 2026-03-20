@@ -2,6 +2,7 @@
 import { Typography } from "@/components/ui/typography";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import Image from "next/image";
 const reviews = [
   {
     text: "Incredible service from Om Sai! Their integrated systems have streamlined our processes, making operations smoother than ever. Highly recommend them for any custom software needs.",
@@ -69,10 +70,11 @@ export function TestimonialsSection({
               </Typography>
               <div className="flex items-center gap-4 mt-auto">
                 <div className="h-14 w-14 rounded-full overflow-hidden">
-                  <img
-                    loading="lazy"
+                  <Image
                     src={review.avatar}
                     alt={review.name}
+                    width={56}
+                    height={56}
                     className="w-full h-full object-cover"
                   />
                 </div>

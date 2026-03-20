@@ -2,6 +2,7 @@
 import { Typography } from "@/components/ui/typography";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Code2, Users } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { use } from "react";
@@ -112,10 +113,12 @@ export default function ProjectPage({
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full aspect-[21/9] rounded-3xl overflow-hidden mb-16 relative shadow-2xl"
         >
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, 80vw"
+            className="object-cover"
           />
         </motion.div>
         {}

@@ -4,6 +4,7 @@ import { Typography } from "@/components/ui/typography";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 export default function ContactPage() {
   const [step, setStep] = useState(1);
@@ -38,7 +39,7 @@ export default function ContactPage() {
         email: "",
         message: "",
       });
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Please try again later.");
     } finally {
       setIsSubmitting(false);
@@ -61,7 +62,7 @@ export default function ContactPage() {
           >
             <motion.div variants={fadeInUp}>
               <Typography variant="h1" className="mb-6">
-                Let's build something{" "}
+                Let&apos;s build something{" "}
                 <span className="text-primary italic">extraordinary.</span>
               </Typography>
             </motion.div>
@@ -79,10 +80,12 @@ export default function ContactPage() {
               variants={fadeInUp}
               className="hidden md:block w-full h-64 md:h-72 rounded-3xl overflow-hidden mb-12 relative isolate shadow-lg"
             >
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2000&auto=format&fit=crop"
-                className="absolute inset-0 w-full h-full object-cover z-0 filter brightness-90 hover:scale-105 transition-transform duration-700"
+                className="object-cover z-0 filter brightness-90 hover:scale-105 transition-transform duration-700"
                 alt="Engineers collaborating"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-background/10 to-transparent z-10 pointer-events-none"></div>
             </motion.div>

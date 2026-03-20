@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true, data });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Error sending email" }, { status: 500 });
   }
 }

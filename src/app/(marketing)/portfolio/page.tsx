@@ -4,6 +4,7 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { Typography } from "@/components/ui/typography";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/data";
 export default function PortfolioPage() {
@@ -47,11 +48,12 @@ export default function PortfolioPage() {
                 className="w-full"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-muted overflow-hidden mb-6 isolation-auto">
-                  <img
-                    loading="lazy"
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   {}
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

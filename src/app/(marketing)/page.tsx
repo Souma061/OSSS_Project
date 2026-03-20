@@ -6,6 +6,7 @@ import { Typography } from "@/components/ui/typography";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Cpu, ShieldCheck, Train } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 export default function HomePage() {
   return (
@@ -100,9 +101,11 @@ export default function HomePage() {
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
               className="w-full relative rounded-xl overflow-hidden bg-muted shadow-inner transition-transform duration-700 group-hover/hero:scale-[1.01]"
             >
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop"
                 alt="Dashboard Preview"
+                width={2000}
+                height={1125}
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
@@ -201,11 +204,12 @@ export default function HomePage() {
               </Typography>
             </div>
             <div className="w-full h-48 mt-4 mb-6 rounded-2xl overflow-hidden relative z-10">
-              <img
-                loading="lazy"
+              <Image
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 alt="Team collaborating"
+                fill
+                sizes="(max-width: 768px) 100vw, 66vw"
               />
             </div>
             <div className="flex items-center text-sm font-medium text-primary mt-auto relative z-10 transition-transform group-hover:translate-x-1">
@@ -275,11 +279,12 @@ export default function HomePage() {
           >
             <Link href="/portfolio/1" className="absolute inset-0 z-30"></Link>
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-10 w-full h-full pointer-events-none"></div>
-            <img
-              loading="lazy"
+            <Image
               src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=2000&auto=format&fit=crop"
               alt="Train Background"
-              className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40 group-hover:scale-110 group-hover:opacity-50 transition-all duration-1000 z-0"
+              fill
+              sizes="(max-width: 768px) 100vw, 66vw"
+              className="object-cover mix-blend-overlay opacity-40 group-hover:scale-110 group-hover:opacity-50 transition-all duration-1000 z-0"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent z-[5] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <Typography
